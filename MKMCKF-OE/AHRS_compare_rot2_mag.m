@@ -14,6 +14,7 @@ addpath('MKMCKF-OE');
 addpath('ESKF');
 addpath('madgwick_algorithm_matlab');
 addpath('data');
+addpath('madgwick_algorithm_matlab/quaternion_library');
 
 %% load the data
 load('gait_0.2_mag.mat');

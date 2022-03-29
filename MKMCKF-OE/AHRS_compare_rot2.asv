@@ -14,7 +14,7 @@ addpath('MKMCKF-OE');
 addpath('ESKF');
 addpath('madgwick_algorithm_matlab');
 addpath('data');
-addpath('madgwick_algorithm_matlab/quaternion_library');
+addpath('madgwick_algorithm_matlab/');
 
 
 %% load the data
