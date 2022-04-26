@@ -24,9 +24,9 @@ function out=orientation_estimation_ahrs_mkmc_fun_(acc,gyro,mag,fs,sigma_x,sigma
   % MagnetometerNoise 
   lamda_m=0.1;
   % LinearAccelerationNoise
-  xi=0.0096236*10;
+  xi=0.0096236;
   % MagneticDisturbanceNoise gamma
-  xi_m=0.3*10;
+  xi_m=0.3;
   %LinearAcclerationDecayFactor 
   nv=0.3;
   % MagneticDisturbanceDecayFactor  sigama

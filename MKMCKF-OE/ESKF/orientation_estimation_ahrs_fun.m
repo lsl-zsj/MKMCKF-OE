@@ -33,7 +33,7 @@ function out=orientation_estimation_ahrs_fun(acc,gyro,mag,fs)
   nv_m=0.3;
   
   % ExpectedMagneticFieldStrength 
-  MagSth=50;
+  MagSth=80;
   pMagVec=[MagSth 0 0];
   
   Ra= (lamda+xi+k2*(beta+yita))*eye(3);
