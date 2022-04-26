@@ -1,4 +1,4 @@
-function AHRS_compare_rot2_review()
+function AHRS_compare_rot2_mag()
 
 %%
 % This function is used to compare the performance of orientation
@@ -17,7 +17,7 @@ addpath('data100hz');
 addpath('madgwick_algorithm_matlab/quaternion_library');
 
 %% load the data
-load('gait_02_100hz.mat');
+load('gait_02_mag_100hz.mat');
 IMU=gait;
 
 %
@@ -78,18 +78,26 @@ ahrs=orientation_estimation_ahrs_fun(Accelerometer,Gyroscope,Magnetic,fs);
 euler_ahrs=eulerd(ahrs.Quat,'ZXY','frame');
 
 
+% len=length(Magnetic);
+% Mag_norm=zeros(len,1);
+% for i=1:len
+%     Mag_norm(i)=norm(Magnetic(i,:));
+% end
+% figure
+% plot(Mag_norm)
 %% mkmc ahrs
-
+% sigma_1=2.01;
+% sigma_2=0.1351;
 
 sigma_1=1.6188;
 sigma_2=0.4234;
-
 sigma1=2*sigma_1*sigma_1;
 sigma2=2*sigma_2*sigma_2;
 xigma_x=[10^8 10^8 10^8 10^8 10^8 10^8 sigma1 sigma1 sigma1 sigma2 sigma2 sigma2]; 
 xigma_y=[10^8 10^8 10^8 10^8 10^8 10^8];
 mkmc_ahrs=orientation_estimation_ahrs_mkmc_fun_(Accelerometer,Gyroscope,Magnetic,fs,xigma_x,xigma_y);
 euler_mkmc_ahrs=eulerd(mkmc_ahrs.Quat,'ZXY','frame');
+
 
 
 
@@ -108,7 +116,6 @@ plot(time,euler(:,3),'blue',time,euler_ahrs(:,3),'red',time,euler_mkmc_ahrs(:,3)
 legend('GD Pitch','AHRS Pitch','MKMC Pitch')
 set(gca,'FontSize',12)
 linkaxes([x1,x2,x3],'x')
-
 
 
 
